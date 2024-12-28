@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Loan COOPEC-LUALABA</title>
+    <!--- custom css link--->
+    <link rel="stylesheet" href="/css/lualaba.css">
+    <!--- boxicons link--->
+    <link rel="stylesheet" href="/boxicons/boxicons.min.css">
+    <!-- Link script -->
+    <script src="./assets/js/all-calculators.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"> <img src="/images/CLualaba/LOGO.Lualaba.png"></a>
+        <div><i class="bx bx-menu" id="menu-icon" ></i></div>
+
+        <div class="menu-bar">
+        <ul class="navbar">
+            <li><a href="Webpage.html">Accueil</a></li>
+            <li><a href="#A propos">A propos<i class='bx bxs-chevron-down'></i></a>
+                <div class="sub-menu1">
+                    <ul>
+                        <li><a href="histoire.html" target="_blank">Historique</a></li>
+                        <li><a href="mission.html" target="_blank">Mission</a></li>
+                        <li><a href="vision.html" target="">Vision</a></li>
+                        <li><a href="valeurs.html" target="">Valeurs</a></li>
+                    </ul>
+            
+                 </div>
+            </li>
+            <li><a href="#">Produits & Services<i class='bx bxs-chevron-down'></i></a>
+                <div class="sub-menu1">
+                    <ul>
+                        
+                        <li class="hover-me"><a href="#">Epargne<i class='bx bxs-chevron-right'></i></a>
+                        <div class="sub-menu2">
+                            <ul>
+                                <li><a href="#">Epargne à la carte</a></li>
+                                <li><a href="#">Epargne à Vue</a></li>
+                                <li><a href="#">Epargne caution</a></li>
+                                <li><a href="#">Epargne à Terme </a></li>
+                                <li><a href="#">Epargne Consignée</a></li>
+                                <li><a href="#">Epargne groupe solidaire</a></li>
+
+                            </ul>            
+                        </div>
+                        </li>
+                        <li class="hover-me"><a href="#">Credit<i class='bx bxs-chevron-right'></i></a>
+                            <div class="sub-menu2">
+                                <ul>
+                                    <li><a href="#">Crédit au groupe solidaire</a></li>
+                                    <li><a href="#">Crédit d’affaires ou AGR</a></li>
+                                    <li><a href="#">Crédit à la consommation</a></li>
+                                    <li><a href="#">Crédit haraka</a></li>
+                                </ul>            
+                            </div>
+                        </li>
+                        
+                        <li class="hover-me"><a href="#">Digitaux<i class='bx bxs-chevron-right'></i></a>
+                            <div class="sub-menu2">
+                                <ul>
+                                    <li><a href="#">Sms Banking</a></li>
+                                    <li><a href="#">Agency Banking</a></li>
+                                    <li><a href="#">Guichet automathique</a></li>
+                                    <li><a href="#">Mobile money</a></li>
+                                    <li><a href="#">Internet Banking</a></li>
+                                </ul>            
+                            </div>
+                        </li>
+                        </li>
+                
+                    </ul> 
+            
+                 </div>
+            </li>
+            <li><a href="#gallerie">Gallerie</a></li>
+            <li><a href="#contact">Contact Nous</a></li>
+        </ul>
+    </div>
+    </header>
+    <section>
+
+        <div class="container mt-5" id="simulation">
+            <h1>Loan Simulation</h1>
+            <div class="container-row ">
+                <div class="form-container">
+                    <form id="loanForm">
+                        <div class="input-wrapper row">
+                            <label class="input col">
+                                    <p class="input__title">Currency</p>
+                                    <div class="dropdown-wrapper">
+                                        <div class="input-field row" tabindex="0">
+                                            <select id="currency"
+                                                class="input-field__text"
+                                                onchange="updateCurrency(this)"
+                                                required>
+                                                <option value="CDF"
+                                                    selected>CDF</option>
+                                                <option value="USD">USD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="input-wrapper row">
+                            <label class="input col">
+                                    <p class="input__title">Loan Amount:</p>
+                                    <div class="input-field row">
+                                        <span class="input-field__hint"
+                                            id="cur-selected">CDF</span>
+                                        <input class="input-field__input"
+                                            placeholder type="number"
+                                            id="loan_amount"
+                                            value="50000" />
+                                    </div>
+                                </label>
+                            <label class="input col">
+                                    <p class="input__title">Interest Rate</p>
+                                    <div class="input-field row">
+                                        <input type="number"
+                                            class="input-field__input" placeholder
+                                            id="interestRate"
+                                            value="5" />
+                                        <span class="input-field__hint">%</span>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="dropdown-wrapper row">
+                            <label for="loanType" class="input col">
+                                    <p class="input__title">Loan Type:</p>
+                                    <div class="dropdown-wrapper">
+                                        <div class="input-field row" tabindex="0">
+                                            <select id="loanType"
+                                                class="input-field__text"
+                                                onchange="toggleRelatedInputs(this)"
+                                                required>
+                                                <option value="flat">Flat
+                                                    Rate</option>
+                                                <option value="reducing">Reducing
+                                                    Balance</option>
+                                                <option
+                                                    value="amortized">Amortized</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="input-wrapper row">
+                            <label class="input col">
+                                    <p class="input__title">Loan Period
+                                        (months):</p>
+                                    <div class="input-field row">
+                                        <input class="input-field__input"
+                                            placeholder type="number"
+                                            id="loanPeriod"
+                                            required />
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="input-wrapper row">
+                            <label for="startDate" class="input col">
+                                    <p class="input__title">Start Date:</p>
+                                    <input type="date" id="startDate"
+                                        class="air-datepicker" required>
+                                </label>
+                        </div>
+                        <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row">
+                            <button type="button" class="button button--primary ml-auto" data-action="calculate" id="action-button" onclick="showSimulation()">Calculate</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="results-container">
+                    <div id="results" class="result-table__wrapper"></div>
+                    <div id="footnote" class="footnote"></div>
+                    <div class="proceed-container" style="text-align:center; margin-top: 20px;">
+                        <button id="proceed-button" class="button button--secondary" style="display:none;" onclick="showDetailsForm()">Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loadingOverlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="spinner"></div>
+                <p>Submitting your details, please wait...</p>
+            </div>
+        </div>
+    
+        <div id="detailsFormContainer" class="container mt-5" style="display:none;">
+            <h2>Client Information</h2>
+            <form id="detailsForm">
+                <div class="input-wrapper row">
+                    <label class="input col">
+                            <p class="input__title">First Name:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="text"
+                                    id="firstName" required />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Middle Name:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="text"
+                                    id="middleName" />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Last Name:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="text"
+                                    id="lastName" required />
+                            </div>
+                        </label>
+                </div>
+                <div class="input-wrapper row">
+                    <label class="input col">
+                            <p class="input__title">Client Code:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="text"
+                                    id="clientCode" placeholder="BB/I/_______"
+                                    required />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Place of Birth:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="text"
+                                    id="placeOfBirth" required />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Children:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="number"
+                                    id="children" required />
+                            </div>
+                        </label>
+                </div>
+                <div class="input-wrapper row">
+                    <label class="input col">
+                            <p class="input__title">Telephone:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="tel"
+                                    id="telephone" pattern="^\+243\d{9}$"
+                                    placeholder="(+243) _________" required />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">E-mail:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="email"
+                                    id="email" required />
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Birth Date:</p>
+                            <div class="input-field row">
+                                <input class="input-field__input" type="date"
+                                    id="birthDate" required />
+                                <span id="birthDateHint"
+                                    style="font-size: 0.5em; color: rgb(133, 128, 128);"></span>
+                            </div>
+                        </label>
+                </div>
+                <span id="email-error" class="error-message"></span>
+                <div class="input-wrapper row">
+                    <label class="input col">
+                            <p class="input__title">Monthly Income:</p>
+                            <div class="dropdown-wrapper">
+                                <div class="input-field row">
+                                    <select id="income" class="input-field__text"
+                                        required>
+                                        <option value="unknown">unknown</option>
+                                        <option value="1-200">1-200 USD</option>
+                                        <option value="201-500">201-500 USD</option>
+                                        <option value="501-1200">501-1200
+                                            USD</option>
+                                        <option value="501-1200">1201-2000
+                                            USD</option>
+                                        <option value="501-1200">2001-3000
+                                            USD</option>
+                                        <option value="501-1200">3001-5000
+                                            USD</option>
+                                        <option value="501-1200">5001-10000
+                                            USD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Marital Status:</p>
+                            <div class="dropdown-wrapper">
+                                <div class="input-field row">
+                                    <select id="maritalStatus"
+                                        class="input-field__text" required>
+                                        <option value="single">Single</option>
+                                        <option value="married">Married</option>
+                                        <option value="divorced">Divorced</option>
+                                        <option value="widowed">Widowed</option>
+                                        <option value="unknown">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Profession:</p>
+                            <div class="dropdown-wrapper">
+                                <div class="input-field row" tabindex="0">
+                                    <select id="profession"
+                                        class="input-field__text" required>
+                                        <option value="public">Public
+                                            Sector</option>
+                                        <option value="private">Private
+                                            Sector</option>
+                                        <option
+                                            value="independent">Independent</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </label>
+                    <label class="input col">
+                            <p class="input__title">Nationality:</p>
+                            <div class="dropdown-wrapper">
+                                <div class="input-field row" tabindex="0">
+                                    <select id="nationality"
+                                        class="input-field__text" required>
+                                        <option value="Congolese">Congolese</option>
+                                        <option value="Ugandan">Ugandan</option>
+                                        <option value="Kenyan">Kenyan</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </label>
+                </div>
+                <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row">
+                    <button type="button" class="button button--secondary" onclick="backToSimulations()">Back</button>
+                    <button type="button" class="button button--primary ml-auto" data-action="summarize" onclick="summarizeDetails()">Continue</button>
+                </div>
+            </form>
+        </div>
+    
+        <div id="summaryContainer" class="container mt-5" style="display:none;">
+            <h2>Summary of Details</h2>
+            <div id="summaryContent"></div>
+            <div class="row">
+                <button type="button" class="button button--secondary mt-5" onclick="cancelProcess()">Cancel</button>
+                <button type="button" class="button button--primary ml-auto mt-5" onclick="submitDetails()" id="submit-btn">Submit</button>
+                <!-- <button type="submit" class="button button--primary ml-auto mt-5">Submit</button> -->
+            </div>
+        </div>
+        <div id="successSection" class="container mt-5" style="display: none;">
+            <h2 class="text-center">Submission Successful!</h2>
+            <div class="success-message" style="text-align: center; margin-top: 20px;">
+                <p>Thank you for submitting your details.An email has been sent to our team with following details, also check your email at
+                    <span id="mail_display" style="color: rgb(129, 185, 32);"></span> to confirm</p>
+                <div id="successSummary" style="margin-top: 20px; font-size: 16px;"></div>
+            </div>
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="button button--primary" onclick="restartForm()">Submit Another Response</button>
+            </div>
+        </div>
+    </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+    <section class="footer" id="footer">
+        <!-- Footer content-->
+   <div class="footer-content">
+    <div class="footer-box">
+        <div class="footer-logo"> <h2 class="footer-logo">COOPEC-LUALABA</h2></div>
+    <div class="social-media">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </div>
+    <div class="footer-box">
+        <h2 class="footer-title">Services </h2>
+        <a href="#">Epargne à la carte (EAC)</a>
+        <a href="#">Epargne à Vue </a>
+        <a href="#">Plan d’Epargne (PE)</a>
+        <a href="#">Epargne à Terme (EAT)</a>
+        <a href="#">Epargne groupe solidaire</a>
+    </div>
+    <div class="footer-box">
+        <h2 class="footer-title">Produits</h2>
+        <a href="#">Crédit d’affaires ou AGR</a>
+        <a href="#">Crédit à la consommation</a>
+        <a href="#">Crédit Express</a>
+        <a href="#">Crédit au groupe solidaire</a>
+    </div>
+    <div class="footer-box">
+        <h2 class="footer-title">Entreprise</h2>
+        <a href="#">Aprops</a>
+        <a href="#">Rapport Annuel</a>
+        <a href="#">gallerie</a>
+        <a href="#">Actualite</a>
+    </div>
+   </div>
+   </section>
+  
+<!-- copryight -->
+ <div class="copryight">
+    <p>&#169; 2025COOPEC-LUALABA all Rights reserved/ <span>Design by CNTConsulting</span>.</p>
+ </div>
+
+
+ <!-- Scroll to top button -->
+
+      <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- custom Js files -->
+     <script src="/JS FOLDER/main.js"></script>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script async src="./assets/js/lib/math.min.js"></script>
+    <script defer src="./assets/js/functions.js"></script>
+    <script defer src="./assets/js/lib/air-datepicker.js"></script>
+    <script defer src="./assets/js/datepicker.js"></script>
+    <script>
+        $(document).ready(function() {
+            /*$('#loanForm').submit(function(e) {
+                e.preventDefault();
+                if (validateLoanForm()) {
+                    calculateLoan(); // Proceed with calculation if valid
+                }
+                // calculateLoan();
+            });
+            $('#currency').change();*/
+        });
+       
+       
+        document.getElementById('clientCode').addEventListener('input', function() {
+            const value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 10);
+            const part1 = value.substring(0, 2);
+            const part2 = value.substring(2, 3);
+            const part3 = value.substring(3);
+            this.value = `${part1 === "BB" ? part1 : "BB"}/${part2 === "I" ? part2 : "I"}/${(part1 !== "BB" ? part1 : "") + (part2 !== "I" ? part2 : "") + part3}`.substring(0, 11);
+        });
+        document.getElementById('telephone').addEventListener('input', function() {
+            let value = this.value.replace(/[^0-9+]/g, '');
+            if (!value.startsWith('+243')) {
+                value = '+243' + value.replace(/^\+243/, '');
+            }
+            if (value.length > 13) {
+                value = value.substring(0, 13);
+            }
+            this.value = value;
+        });
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const errorSpan = document.getElementById('email-error');
+            if (!isValid) {
+                errorSpan.textContent = 'Invalid email format';
+            } else {
+                errorSpan.textContent = '';
+            }
+        });
+
+        function updateCurrency(select) {
+            $('#cur-selected').text(select.value);
+        }
+        function showSimulation(){
+            if (validateLoanForm()) {
+                calculateLoan(); // Proceed with calculation if valid
+            }
+        }
+        function backToSimulations() {
+            $('#detailsFormContainer').hide();
+            $('#simulation').show();
+            $('html, body').animate({
+                scrollTop: $("#simulation").offset().top
+            }, 500);
+        }
+
+        function cancelProcess() {
+            if (confirm("Are you sure you want to cancel the process? Information will be reset.")) {
+                location.reload();
+            }
+        }
+
+        function calculateLoan() {
+            var loanAmount = parseFloat($('#loan_amount').val());
+            var loanType = $('#loanType').val();
+            var startDate = new Date($('#startDate').val());
+            var interestRate = parseFloat($('#interestRate').val()) / 100;
+            var loanPeriod = parseInt($('#loanPeriod').val());
+            var currency = $('#currency').val();
+            if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanPeriod)) {
+                alert("Please fill out all fields with valid numbers.");
+                return;
+            }
+            $('#results').empty();
+            var totalInterest = 0;
+            var totalPrincipal = 0;
+            var totalPayment = 0;
+            var remainingAmount = loanAmount;
+            var resultsHtml = '<h4>Loan Schedule Calculated as ' + (loanType === "flat" ? "Flat Rate" : loanType === "reducing" ? "Reducing Balance" : "Amortized") + '</h4><table class="result-table"><thead><tr><th class="indigo">Month</th><th class="indigo">Due Date</th><th class="indigo">Interest</th><th class="indigo">Principal</th><th class="indigo">Payment</th></tr></thead><tbody>';
+            for (var month = 1; month <= loanPeriod; month++) {
+                var dueDate = new Date(startDate.getFullYear(), startDate.getMonth() + month, startDate.getDate());
+                var interest = 0;
+                var principal, monthlyPayment;
+                if (loanType === 'flat') {
+                    interest = loanAmount * interestRate / 12;
+                    monthlyPayment = (loanAmount / loanPeriod) + interest;
+                    principal = loanAmount / loanPeriod;
+                } else if (loanType === 'reducing') {
+                    interest = remainingAmount * interestRate / 12;
+                    monthlyPayment = (loanAmount / loanPeriod) + interest;
+                    principal = loanAmount / loanPeriod;
+                } else if (loanType === 'amortized') {
+                    var monthlyInterestRate = interestRate / 12;
+                    monthlyPayment = loanAmount * monthlyInterestRate / (1 - Math.pow(1 + monthlyInterestRate, -loanPeriod));
+                    interest = remainingAmount * monthlyInterestRate;
+                    principal = monthlyPayment - interest;
+                    payment = monthlyPayment;
+                }
+                var endingBalance = remainingAmount - principal;
+                resultsHtml += '<tr><td>' + month + '</td><td>' + formatDate(dueDate) + '</td><td>' + numberWithCommas(interest.toFixed(2)) + '</td><td>' + numberWithCommas(principal.toFixed(2)) + '</td><td>' + numberWithCommas(monthlyPayment.toFixed(2)) + '</td></tr>';
+                totalInterest += interest;
+                totalPrincipal += principal;
+                totalPayment += monthlyPayment;
+                remainingAmount = endingBalance;
+            }
+            resultsHtml += '<tr class="table-info"><td colspan="2"><strong>Total</strong></td><td><strong>' + currency + ' ' + numberWithCommas(totalInterest.toFixed(2)) + '</strong></td><td><strong>' + currency + ' ' + numberWithCommas(totalPrincipal.toFixed(2)) + '</strong></td><td><strong>' + currency + ' ' + numberWithCommas(totalPayment.toFixed(2)) + '</strong></td></tr>';
+            resultsHtml += '</tbody></table>';
+            $('#results').html(resultsHtml);
+            $('#footnote').html('Loan Period: ' + loanPeriod + (loanPeriod > 1 ? " Months" : " Month"));
+            $('#proceed-button').show();
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function formatDate(date) {
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, '0');
+            var day = date.getDate().toString().padStart(2, '0');
+            return year + '-' + month + '-' + day;
+        }
+
+        function showDetailsForm() {
+            if (validateLoanForm()) {
+                $('#detailsFormContainer').show();
+                $('#simulation').hide();
+                $('html, body').animate({
+                    scrollTop: $("#detailsFormContainer").offset().top
+                }, 500);
+            }
+        }
+
+        function summarizeDetails() {
+
+            if (validateDetailsForm()) {
+                $('#detailsFormContainer').hide();
+                var summaryHtml = `<div class="summary-details">
+                    <ul class="summary-list">
+                        <li><strong>First Name:</strong> ${$('#firstName').val()}</li>
+                        <li><strong>Middle Name:</strong> ${$('#middleName').val()}</li>
+                        <li><strong>Last Name:</strong> ${$('#lastName').val()}</li>
+                        <li><strong>Client Code:</strong> ${$('#clientCode').val()}</li>
+                        <li><strong>Place of Birth:</strong> ${$('#placeOfBirth').val()}</li>
+                        <li><strong>Telephone:</strong> ${$('#telephone').val()}</li>
+                        <li><strong>Marital Status:</strong> ${$('#maritalStatus').val()}</li>
+                        <li><strong>Birth Date:</strong> ${$('#birthDate').val()}</li>
+                        <li><strong>E-mail:</strong> ${$('#email').val()}</li>
+                        <li><strong>Profession:</strong> ${$('#profession').val()}</li>
+                        <li><strong>Monthly Income:</strong> ${$('#income').val()}</li>
+                    </ul>
+                </div>
+                <div id="repay-schedule"></div>`;
+
+                $('#summaryContent').html(summaryHtml);
+                $('#summaryContainer').show();
+
+                const results = calculateRepaymentSchedule();
+                displayResults(results);
+
+                $('html, body').animate({
+                    scrollTop: $("#summaryContainer").offset().top
+                }, 500);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const birthDateInput = document.getElementById('birthDate');
+            const birthDateHint = document.getElementById('birthDateHint');
+            const today = new Date();
+            // Calculate date 18 years ago
+            const eighteenYearsAgo = new Date(
+                today.getFullYear() - 18,
+                today.getMonth(),
+                today.getDate()
+            );
+            // Format max date as YYYY-MM-DD for the input
+            const maxDate = eighteenYearsAgo.toISOString().split('T')[0];
+            birthDateInput.max = maxDate;
+            // Format max date as dd/mm/yyyy for the hint
+            const formattedMaxDate = `${String(eighteenYearsAgo.getDate()).padStart(2, '0')}/${String(eighteenYearsAgo.getMonth() + 1).padStart(2, '0')}/${eighteenYearsAgo.getFullYear()}`;
+            // Set the hint or placeholder
+            birthDateHint.textContent = `Maximum allowed date:${formattedMaxDate}`;
+        });
+
+        function validateDetailsForm() {
+            let isValid = true;
+            const fields = ['firstName', 'lastName', 'clientCode', 'placeOfBirth', 'telephone', 'email', 'birthDate'];
+            clearErrors(); // Clear any existing error messages
+            fields.forEach(function(fieldId) {
+                const field = document.getElementById(fieldId);
+                const label = field.parentElement.querySelector('p.input__title'); // Get the label text
+                if (!field.value.trim()) {
+                    const fieldName = label ? formatFieldName(label.textContent) : formatFieldName(fieldId);
+                    displayError(fieldId, `${fieldName} is required.`);
+                    isValid = false;
+                }
+            });
+            // Additional validation for email format
+            const emailField = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField && !emailPattern.test(emailField.value.trim())) {
+                displayError('email', 'Invalid email format.');
+                isValid = false;
+            }
+
+            const birthDateField = document.getElementById('birthDate');
+            if (birthDateField && birthDateField.value) {
+                const birthDate = new Date(birthDateField.value.trim());
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDifference = today.getMonth() - birthDate.getMonth();
+                const dayDifference = today.getDate() - birthDate.getDate();
+                debugger;
+                if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+                    age;
+                }
+                if (age < 18) {
+                    displayError('birthDate', 'Age must be at least 18 years.');
+                    isValid = false;
+                }
+            }
+            return isValid;
+        }
+
+        function formatFieldName(text) {
+            return text
+                .trim()
+                .split(/(?=[A-Z])/) // Split before each capital letter
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
+                .join(' '); // Rejoin with a space
+        }
+
+
+        function submitDetails() {
+            $("#submit-btn").hide();
+            // Collect data from the first form
+            const userData = {
+                firstName: $('#firstName').val(),
+                middleName: $('#middleName').val(),
+                lastName: $('#lastName').val(),
+                clientCode: $('#clientCode').val(),
+                placeOfBirth: $('#placeOfBirth').val(),
+                telephone: $('#telephone').val(),
+                maritalStatus: $('#maritalStatus').val(),
+                birthDate: $('#birthDate').val(),
+                email: $('#email').val(),
+                profession: $('#profession').val(),
+                income: $('#income').val(),
+                nationality: $('#nationality').val()
+            };
+
+            // Collect data from the second form (if needed)
+            const loanData = {
+                currency: $('#currency').val(),
+                loanAmount: $('#loan_amount').val(),
+                interestRate: $('#interestRate').val(),
+                loanType: $('#loanType').val(),
+                loanPeriod: $('#loanPeriod').val(),
+                startDate: $('#startDate').val(),
+
+            };
+
+            // Combine both datasets into a single object
+            const combinedData = {...userData,
+                ...loanData
+            };
+            debugger
+            // Send the combined data to the PHP backend
+            $.ajax({
+                url: 'backend.php', // Replace with your PHP file URL
+                type: 'POST',
+                data: combinedData, // Send combined form data
+                beforeSend: function() {
+                    // Show loading overlay
+                    document.getElementById('loadingOverlay').style.display = 'flex';
+                },
+                success: function(response) {
+                    // Parse or directly check the response
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    if (response.trim() === "Emails sent successfully!") {
+                        alert('Emails sent successfully!');
+                        showSuccessSection(combinedData);
+                    } else {
+                        alert('Details submitted successfully, but the server response was unexpected: ' + response);
+                    }
+                    console.log('Server response:', response); // Log the server response
+                },
+                error: function(xhr, status, error) {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    console.error('Error submitting details:', error);
+                    alert('There was an error submitting the details. Please try again.');
+                    $("#submit-btn").show();
+                }
+            });
+        }
+
+        function showSuccessSection(formData) {
+            // Hide the form and other sections
+            document.getElementById('detailsFormContainer').style.display = 'none';
+            document.getElementById('summaryContainer').style.display = 'none';
+            // Prepare the success summary
+            const successSummary = document.getElementById('successSummary');
+            $("#mail_display").text(formData.email);
+            successSummary.innerHTML = Object.entries(formData)
+                .map(([key, value]) => `<strong>${formatFieldName(key)}:</strong> ${value}`)
+                .join('<br>');
+            document.getElementById('successSection').style.display = 'block';
+        }
+
+        function restartForm() {
+            document.getElementById('detailsForm').reset();
+            document.getElementById('loanForm').reset();
+            document.getElementById('successSection').style.display = 'none';
+            document.getElementById('detailsFormContainer').style.display = 'block';
+        }
+
+        function calculateRepaymentSchedule() {
+            var loanAmount = parseFloat($('#loan_amount').val());
+            var loanType = $('#loanType').val();
+            var interestRate = parseFloat($('#interestRate').val()) / 100;
+            var loanPeriod = parseInt($('#loanPeriod').val());
+            var startDate = new Date($('#startDate').val());
+            var totalInterest = 0;
+            var totalPrincipal = 0;
+            var totalPayment = 0;
+            var remainingAmount = loanAmount;
+            const results = [];
+            for (var month = 1; month <= loanPeriod; month++) {
+                var dueDate = new Date(startDate.getFullYear(), startDate.getMonth() + month, startDate.getDate());
+                var interest = 0;
+                var principal, monthlyPayment;
+                if (loanType === 'flat') {
+                    interest = loanAmount * interestRate / 12;
+                    monthlyPayment = (loanAmount / loanPeriod) + interest;
+                    principal = loanAmount / loanPeriod;
+                } else if (loanType === 'reducing') {
+                    interest = remainingAmount * interestRate / 12;
+                    monthlyPayment = (loanAmount / loanPeriod) + interest;
+                    principal = loanAmount / loanPeriod;
+                } else if (loanType === 'amortized') {
+                    var monthlyInterestRate = interestRate / 12;
+                    monthlyPayment = loanAmount * monthlyInterestRate / (1 - Math.pow(1 + monthlyInterestRate, -loanPeriod));
+                    interest = remainingAmount * monthlyInterestRate;
+                    principal = monthlyPayment - interest;
+                    payment = monthlyPayment;
+                }
+                var endingBalance = remainingAmount - principal;
+                totalInterest += interest;
+                totalPrincipal += principal;
+                totalPayment += monthlyPayment;
+                remainingAmount = endingBalance;
+                results.push({
+                    month: month,
+                    repaymentDate: dueDate.toISOString().split('T')[0],
+                    monthlyRepayment: monthlyPayment.toFixed(2),
+                    principal: principal.toFixed(2),
+                    interest: interest.toFixed(2),
+                    balance: endingBalance.toFixed(2)
+                });
+            }
+
+            return results;
+        }
+
+        function displayResults(results) {
+            let resultHTML = `<table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Repayment Date</th>
+                        <th>Monthly Repayment</th>
+                        <th>Principal</th>
+                        <th>Interest</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+            results.forEach(result => {
+                resultHTML += `<tr>
+                    <td>${result.month}</td>
+                    <td>${result.repaymentDate}</td>
+                    <td>${result.monthlyRepayment}</td>
+                    <td>${result.principal}</td>
+                    <td>${result.interest}</td>
+                    <td>${result.balance}</td>
+                </tr>`;
+            });
+            resultHTML += `</tbody></table>`;
+            document.getElementById("repay-schedule").innerHTML = resultHTML;
+        }
+
+        function validateLoanForm() {
+            let isValid = true;
+            const loanAmount = document.getElementById('loan_amount').value;
+            const interestRate = document.getElementById('interestRate').value;
+            const loanPeriod = document.getElementById('loanPeriod').value;
+            const startDate = document.getElementById('startDate').value;
+            clearErrors(); // Clear previous errors
+            if (!loanAmount || loanAmount <= 0) {
+                displayError('loan_amount', 'Please enter a valid loan amount.');
+                isValid = false;
+            }
+            if (!interestRate || interestRate <= 0) {
+                displayError('interestRate', 'Please enter a valid interest rate.');
+                isValid = false;
+            }
+            if (!loanPeriod || loanPeriod <= 0) {
+                displayError('loanPeriod', 'Please enter a valid loan period.');
+                isValid = false;
+            }
+            if (!startDate) {
+                displayError('startDate', 'Please select a start date.');
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        function displayError(inputId, message) {
+            const inputElement = document.getElementById(inputId);
+            const errorElement = document.createElement('span');
+            errorElement.className = 'error-message';
+            errorElement.style.color = 'red';
+            errorElement.textContent = message;
+            inputElement.parentElement.appendChild(errorElement);
+        }
+
+        function clearErrors() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(function(error) {
+                error.remove();
+            });
+        }
+    </script>
+</body>
+</html>
